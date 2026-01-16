@@ -102,7 +102,6 @@ async function fetchCurrentWeather(search) {
   try {
     const response = await fetch(`http://api.weatherapi.com/v1/forecast.json?key=${key}&q=${query}&days=8&aqi=yes&alerts=yes`);
     weather = await response.json();
-    console.log(weather);
     return weather;
   } catch (err) {
     console.log('ERROR: ' + err);
@@ -171,15 +170,11 @@ function printCurrentDay(weather) {
   const hour = localTime.getHours();
   const forecastDays = weather.forecast.forecastday;
   const allhours = forecastDays.flatMap(day => day.hour);
-  // const startIndex = allhours.findIndex(h => new Date(h.time).getHours() === hour);
-  // console.log(startIndex);
   const hour12 = allhours.slice(hour, hour + 12);
-  console.log(hour12);
   create12hours(hour12);
 }
 // makes following 12hours weather data array
 function create12hours(hours) {
-  console.log(hours)
   for (let i = 0; i < hours.length; i++) {
 
     const listItem = document.createElement('li');
@@ -197,7 +192,6 @@ function create12hours(hours) {
 
 async function addFlag(country) {
   const flag = await fetchFlag(country);
-  console.log(flag)
   flagImg.src = flag;
 }
 
@@ -218,7 +212,6 @@ async function domCotent(search) {
   try {
     const weather = await fetchCurrentWeather(search);
     // Clear old content
-    console.log('yoyoyoy')
     currentWeatherContent.innerHTML = '';
     forecastContent.innerHTML = '';
     forecast12hoursList.innerHTML = '';
