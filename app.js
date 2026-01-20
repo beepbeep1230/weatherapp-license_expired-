@@ -39,7 +39,7 @@ searchBarInput.addEventListener('keydown', e => {
 
 async function getLocationSearch(keyword) {
   try {
-    const res = await fetch(`http://api.weatherapi.com/v1/search.json?key=${key}&q=${keyword}`);
+    const res = await fetch(`https://api.weatherapi.com/v1/search.json?key=${key}&q=${keyword}`);
     const data = await res.json();
     return data[0];
   } catch (err) {
@@ -194,19 +194,6 @@ async function addFlag(country) {
   const flag = await fetchFlag(country);
   flagImg.src = flag;
 }
-
-
-
-// main excution
-// fetchCurrentWeather().then(weather => {
-//   changeTheme(weather);
-//   printCurrent(weather);
-//   printForecast(weather);
-//   printCurrentDay(weather);
-//   return weather.location.country;
-// }).then(country => {
-//   addFlag(country);
-// })
 
 async function domCotent(search) {
   try {
