@@ -100,7 +100,7 @@ async function fetchCurrentWeather(search) {
   if (!search) query = await geolocationQuery();
   else query = await searchingQuery();
   try {
-    const response = await fetch(`http://api.weatherapi.com/v1/forecast.json?key=${key}&q=${query}&days=8&aqi=yes&alerts=yes`);
+    const response = await fetch(`https://api.weatherapi.com/v1/forecast.json?key=${key}&q=${query}&days=8&aqi=yes&alerts=yes`);
     weather = await response.json();
     return weather;
   } catch (err) {
